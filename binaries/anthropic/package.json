@@ -1,0 +1,29 @@
+{
+  "name": "anthropic-binary",
+  "version": "1.0.0",
+  "description": "Anthropic Claude CLI binary tool",
+  "main": "anthropic.js",
+  "bin": {
+    "anthropic": "anthropic.js"
+  },
+  "scripts": {
+    "build": "pkg . --targets node18-linux-x64 --output ./bin/anthropic"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^13.1.0",
+    "@anthropic-ai/sdk": "^0.8.0"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  },
+  "pkg": {
+    "scripts": "bin/anthropic.js",
+    "assets": [],
+    "targets": [
+      "node18-linux-x64"
+    ]
+  },
+  "type": "commonjs"
+}

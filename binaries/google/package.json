@@ -1,0 +1,29 @@
+{
+  "name": "google-binary",
+  "version": "1.0.0",
+  "description": "A Google Gemini tool for command line usage",
+  "main": "google.js",
+  "bin": {
+    "google": "google.js"
+  },
+  "scripts": {
+    "build": "pkg . --targets node18-linux-x64 --output ./bin/google"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^13.1.0",
+    "axios": "^1.6.8"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  },
+  "pkg": {
+    "scripts": "bin/google.js",
+    "assets": [],
+    "targets": [
+      "node18-linux-x64"
+    ]
+  },
+  "type": "commonjs"
+}
