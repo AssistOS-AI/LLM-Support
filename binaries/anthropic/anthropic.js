@@ -7,7 +7,7 @@ const anthropicCmd = new Command()
 
 const addCommonOptions = (cmd) =>
     cmd
-        .requiredOption('-k, --key <apiKey>')
+        .option('-k, --key <apiKey>')
         .requiredOption('-m, --model <model>')
         .requiredOption('-p, --prompt <prompt>')
         .option('--temperature <temperature>', parseFloat)
@@ -57,7 +57,14 @@ addCommonOptions(anthropicCmd.commands[2])
 addCommonOptions(anthropicCmd.commands[3])
 
 async function handleChat(opts, cmd) {
-    const anthropic = new Anthropic({ apiKey: opts.key })
+    const apiKey = opts.key || process.env.ANTHROPIC_API_KEY
+
+    if (!apiKey) {
+        console.error('Error: Anthropic API key not provided. Use --key option or set ANTHROPIC_API_KEY environment variable.');
+        process.exit(1);
+    }
+
+    const anthropic = new Anthropic({ apiKey })
 
     let messages
     try {

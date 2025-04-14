@@ -7,7 +7,7 @@ const hfCmd = new Command()
 
 const addCommonOptions = (cmd) =>
     cmd
-        .requiredOption('-k, --key <apiKey>')
+        .option('-k, --key <apiKey>')
         .requiredOption('-m, --model <model>')
         .requiredOption('-p, --prompt <prompt>')
         .option('--temperature <temperature>', parseFloat)
@@ -57,7 +57,14 @@ addCommonOptions(hfCmd.commands[2])
 addCommonOptions(hfCmd.commands[3])
 
 async function handleText(opts, cmd) {
-    const hf = new HfInference(opts.key)
+    const apiKey = opts.key || process.env.HUGGINGFACE_API_KEY;
+
+    if (!apiKey) {
+        console.error('Error: Hugging Face API key not provided. Use --key option or set HUGGINGFACE_API_KEY environment variable.');
+        process.exit(1);
+    }
+
+    const hf = new HfInference(apiKey)
 
     const parameters = {
         temperature: opts.temperature,

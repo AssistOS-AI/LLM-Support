@@ -7,7 +7,7 @@ const openaiCmd = new Command()
 
 const addCommonOptions = (cmd) =>
     cmd
-        .requiredOption('-k, --key <apiKey>')
+        .option('-k, --key <apiKey>', 'API key (defaults to environment variable)')
         .requiredOption('-m, --model <model>')
         .requiredOption('-p, --prompt <prompt>')
         .option('--temperature <temperature>', parseFloat)
@@ -90,7 +90,14 @@ async function handleText(opts, cmd) {
 }
 
 async function handleChat(opts, cmd) {
-    const openai = new OpenAI({ apiKey: opts.key })
+    const apiKey = opts.key || process.env.OPENAI_API_KEY
+
+    if (!apiKey) {
+        console.error('Error: OpenAI API key not provided. Use --key option or set OPENAI_API_KEY environment variable.');
+        process.exit(1);
+    }
+
+    const openai = new OpenAI({ apiKey})
 
     const params = {
         model: opts.model,

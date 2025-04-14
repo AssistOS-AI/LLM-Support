@@ -6,7 +6,7 @@ const googleCmd = new Command()
 
 const addCommonOptions = (cmd) =>
     cmd
-        .requiredOption('-k, --key <apiKey>')
+        .option('-k, --key <apiKey>')
         .requiredOption('-m, --model <model>')
         .requiredOption('-p, --prompt <prompt>')
         .option('--temperature <temperature>', parseFloat)
@@ -69,6 +69,12 @@ async function handleChat(opts, cmd) {
         if (!Array.isArray(messages)) throw new Error()
     } catch {
         messages = [{ role: 'user', content: opts.prompt }]
+    }
+    const apiKey = opts.key|| process.env.GOOGLE_API_KEY;
+
+    if (!apiKey) {
+        console.error('Error: Google API key not provided. Use --key option or set GOOGLE_API_KEY environment variable.');
+        process.exit(1);
     }
 
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${opts.model}:generateContent?key=${opts.key}`
