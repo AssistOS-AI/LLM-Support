@@ -2,7 +2,7 @@
   "name": "anthropic-binary",
   "version": "1.0.0",
   "description": "Anthropic Claude CLI binary tool",
-  "main": "anthropic.js",
+  "main": "Anthropic.js",
   "bin": {
     "anthropic": "Anthropic.js"
   },

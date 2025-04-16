@@ -2,7 +2,7 @@
   "name": "google-binary",
   "version": "1.0.0",
   "description": "A Google Gemini tool for command line usage",
-  "main": "google.js",
+  "main": "Google.js",
   "bin": {
     "google": "Google.js"
   },

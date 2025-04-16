@@ -2,7 +2,7 @@
   "name": "huggingface-binary",
   "version": "1.0.0",
   "description": "A Hugging Face CLI tool using official SDK",
-  "main": "huggingface.js",
+  "main": "HuggingFace.js",
   "bin": {
     "huggingface": "HuggingFace.js"
   },
