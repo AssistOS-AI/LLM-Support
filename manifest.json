@@ -48,7 +48,7 @@
     "llm": [
       {
         "provider": "OpenAI",
-        "name": "gpt-4o-2024-08-06",
+        "name": "gpt-4o",
         "type": "chat",
         "description": "A cheap model specialized in text generation",
         "capabilities": [
