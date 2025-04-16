@@ -22,14 +22,49 @@
     "path": "manager.js",
     "name": "Manager"
   },
-
   "secrets": [
-    {"provider": "OpenAI", "keyName": "OPENAI_API_KEY"},
-    {"provider": "HuggingFace", "keyName": "HUGGINGFACE_API_KEY"},
-    {"provider": "Anthropic", "keyName": "ANTHROPIC_API_KEY"},
-    {"provider": "Google", "keyName": "GOOGLE_API_KEY"},
-    {"provider": "OpenRouter", "keyName": "OPENROUTER_API_KEY"}
-  ]
+    {
+      "provider": "OpenAI",
+      "keyName": "OPENAI_API_KEY"
+    },
+    {
+      "provider": "HuggingFace",
+      "keyName": "HUGGINGFACE_API_KEY"
+    },
+    {
+      "provider": "Anthropic",
+      "keyName": "ANTHROPIC_API_KEY"
+    },
+    {
+      "provider": "Google",
+      "keyName": "GOOGLE_API_KEY"
+    },
+    {
+      "provider": "OpenRouter",
+      "keyName": "OPENROUTER_API_KEY"
+    }
+  ],
+  "objects": {
+    "llm": [
+      {
+        "provider": "OpenAI",
+        "name": "gpt-4o-2024-08-06",
+        "type": "chat",
+        "description": "A cheap model specialized in text generation",
+        "capabilities": [
+          "chat",
+          "completion",
+          "embeddings"
+        ],
+        "pricing": {
+          "input": "2.5",
+          "output": "10"
+        },
+        "contextWindow": 128000,
+        "knowledgeCuttoff": "2024-08-06"
+      }
+    ]
+  }
 }
 
 
