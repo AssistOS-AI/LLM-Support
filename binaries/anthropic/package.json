@@ -4,7 +4,7 @@
   "description": "Anthropic Claude CLI binary tool",
   "main": "anthropic.js",
   "bin": {
-    "anthropic": "anthropic.js"
+    "anthropic": "Anthropic.js"
   },
   "scripts": {
     "build": "pkg . --targets node18-linux-x64 --output ./bin/anthropic"
