@@ -48,7 +48,7 @@
     "llm": [
       {
         "provider": "OpenAI",
-        "name": "text-davinci-003",
+        "name": "gpt-4o",
         "type": "chat",
         "description": "A cheap model specialized in text generation",
         "capabilities": [
