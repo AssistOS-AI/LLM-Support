@@ -114,7 +114,74 @@
         },
         "contextWindow": 8192,
         "knowledgeCuttoff": "2023-09-01"
+      },
+      {
+        "provider": "Anthropic",
+        "name": "claude-3-opus",
+        "type": "chat",
+        "description": "Anthropic’s most powerful Claude 3 model",
+        "capabilities": ["chat", "completion"],
+        "pricing": {
+          "input": "15",
+          "output": "75"
+        },
+        "contextWindow": 200000,
+        "knowledgeCuttoff": "2024-08-01"
+      },
+      {
+        "provider": "Anthropic",
+        "name": "claude-3-sonnet",
+        "type": "chat",
+        "description": "Mid-range Claude 3 model with solid performance",
+        "capabilities": ["chat", "completion"],
+        "pricing": {
+          "input": "3",
+          "output": "15"
+        },
+        "contextWindow": 200000,
+        "knowledgeCuttoff": "2024-08-01"
+      },
+      {
+        "provider": "Anthropic",
+        "name": "claude-3-haiku",
+        "type": "chat",
+        "description": "Fast and cheap Claude model for high-throughput tasks",
+        "capabilities": ["chat", "completion"],
+        "pricing": {
+          "input": "0.25",
+          "output": "1.25"
+        },
+        "contextWindow": 200000,
+        "knowledgeCuttoff": "2024-08-01"
+      },
+      {
+        "provider": "Google",
+        "name": "gemini-1.5-pro",
+        "type": "chat",
+        "description": "Google’s most capable Gemini model with long context",
+        "capabilities": ["chat", "completion", "embeddings"],
+        "pricing": {
+          "input": "7",
+          "output": "21"
+        },
+        "contextWindow": 1000000,
+        "knowledgeCuttoff": "2024-08-01"
+      },
+      {
+        "provider": "Google",
+        "name": "gemini-1.5-flash",
+        "type": "chat",
+        "description": "Lightweight Gemini variant optimized for speed",
+        "capabilities": ["chat", "completion"],
+        "pricing": {
+          "input": "1",
+          "output": "3"
+        },
+        "contextWindow": 1000000,
+        "knowledgeCuttoff": "2024-08-01"
       }
+    ]
+  },
     ]
   }
 }
