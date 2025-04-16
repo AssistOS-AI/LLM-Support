@@ -59,7 +59,11 @@ addCommonOptions(openaiCmd.commands[2])
 addCommonOptions(openaiCmd.commands[3])
 
 async function handleText(opts, cmd) {
-    const openai = new OpenAI({ apiKey: opts.key })
+    const apiKey = opts.key || process.env.OPENAI_API_KEY
+    if (!apiKey) {
+        console.error('Error: API key missing');
+        process.exit(1);
+    }
 
     const params = {
         model: opts.model,
