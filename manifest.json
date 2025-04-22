@@ -49,7 +49,7 @@
       {
         "provider": "OpenAI",
         "name": "gpt-4o",
-        "type": "chat",
+        "type": "text",
         "description": "A cheap model specialized in text generation",
         "capabilities": [
           "chat",
@@ -118,7 +118,7 @@
       {
         "provider": "Anthropic",
         "name": "claude-3-opus",
-        "type": "chat",
+        "type": "text",
         "description": "Anthropic’s most powerful Claude 3 model",
         "capabilities": ["chat", "completion"],
         "pricing": {
@@ -131,7 +131,7 @@
       {
         "provider": "Anthropic",
         "name": "claude-3-sonnet",
-        "type": "chat",
+        "type": "text",
         "description": "Mid-range Claude 3 model with solid performance",
         "capabilities": ["chat", "completion"],
         "pricing": {
@@ -144,7 +144,7 @@
       {
         "provider": "Anthropic",
         "name": "claude-3-haiku",
-        "type": "chat",
+        "type": "text",
         "description": "Fast and cheap Claude model for high-throughput tasks",
         "capabilities": ["chat", "completion"],
         "pricing": {
@@ -157,7 +157,7 @@
       {
         "provider": "Google",
         "name": "gemini-1.5-pro",
-        "type": "chat",
+        "type": "text",
         "description": "Google’s most capable Gemini model with long context",
         "capabilities": ["chat", "completion", "embeddings"],
         "pricing": {
@@ -170,7 +170,7 @@
       {
         "provider": "Google",
         "name": "gemini-1.5-flash",
-        "type": "chat",
+        "type": "text",
         "description": "Lightweight Gemini variant optimized for speed",
         "capabilities": ["chat", "completion"],
         "pricing": {
