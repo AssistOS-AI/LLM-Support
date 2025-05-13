@@ -5,6 +5,7 @@
   "entryPointComponent": "llm-support-landing",
   "description": "An application that adds Llm Support to AssistOS",
   "componentsDirPath": "web-components",
+  "skipUI": true,
   "components": [
     {
       "name": "llm-support-landing",
