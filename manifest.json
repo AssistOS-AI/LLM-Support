@@ -182,7 +182,12 @@
         "knowledgeCuttoff": "2024-08-01"
       }
     ]
-  }
+  },
+  "dependencies": [
+    "@anthropic-ai/sdk",
+    "@google/generative-ai",
+    "openai"
+  ]
 }
 
 
