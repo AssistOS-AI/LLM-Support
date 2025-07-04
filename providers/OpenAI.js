@@ -76,8 +76,9 @@ function OpenAI(){
 
     }
     this.getTextResponse = async function(modelName, prompt, options = {}) {
-        this.modelExists(modelName);
+        //this.modelExists(modelName);
         //call openai lib
+        return "hi";
     }
 
     this.getTextStreamingResponse = function (modelName, prompt, options = {}, onDataChunk) {
