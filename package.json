@@ -1,0 +1,9 @@
+{
+  "name": "LLM-Support",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.56.0",
+    "@google/generative-ai": "^0.24.1",
+    "openai": "^5.8.3"
+  }
+}
