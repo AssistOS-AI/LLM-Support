@@ -75,10 +75,21 @@ function OpenAI(){
         if (!this.models[modelName]) throw new Error(`Provider ${this.name} does not support model ${modelName}`)
 
     }
+    this.getSDKClient = async function () {
+        const OpenAISDK = (await import('openai')).default;
+        let keys = JSON.parse(process.env.API_KEYS);
+        return new OpenAISDK(
+            {
+                apiKey: keys.OPENAI_API_KEY.value
+            });
+    }
     this.getTextResponse = async function(modelName, prompt, options = {}) {
-        //this.modelExists(modelName);
-        //call openai lib
-        return "hi";
+        let client = await this.getSDKClient();
+        const response = await client.responses.create({
+            model: modelName,
+            input: prompt
+        });
+        return response.output[0].content[0].text;
     }
 
     this.getTextStreamingResponse = function (modelName, prompt, options = {}, onDataChunk) {
