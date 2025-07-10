@@ -2,69 +2,40 @@ function OpenAI(){
     this.name = "OpenAI";
     this.models = [
         {
-            name: "gpt-4o",
-            type: "text",
-            description: "A cheap model specialized in text generation",
-            capabilities: [
-                "chat",
-                "completion",
-                "embeddings"
-            ],
-            pricing: {
-                "input": "2.5",
-                "output": "10"
-            },
-            contextWindow: 128000,
-            knowledgeCutoff: "2024-08-06"
-        },
-        {
-            name: "gpt-3.5-turbo",
-            type: "text",
-            description: "OpenAI's low-cost, high-speed text model",
-            capabilities: ["chat", "completion"],
-            pricing: {
-                "input": "1",
-                "output": "2"
-            },
-            contextWindow: 16385,
-            knowledgeCutoff: "2023-09-01"
-        },
-        {
-            name: "o1-preview",
-            type: "text",
-            description: "Experimental OpenAI model, optimized for preview tasks",
-            capabilities: ["completion"],
-            pricing: {
-                "input": "2",
-                "output": "6"
-            },
-            contextWindow: 128000,
-            knowledgeCutoff: "2024-08-06"
-        },
-        {
-            name: "o1-mini",
-            type: "text",
+            modelName: "o1-mini",
+            type: "chat",
             description: "Smaller variant of o1-preview for high-output generation",
             capabilities: ["completion"],
             pricing: {
-                "input": "1.5",
-                "output": "5"
+                "input": "1.1",
+                "output": "4.4"
             },
             contextWindow: 128000,
-            knowledgeCutoff: "2024-08-06"
+            knowledgeCutoff: "2024-09-12"
         },
         {
-            provider: "OpenAI",
-            name: "gpt-4",
-            type: "text",
-            description: "Previous flagship GPT-4 model",
-            capabilities: ["chat", "completion", "embeddings"],
+            modelName: "gpt-4o-mini",
+            type: "chat",
+            description: "",
+            capabilities: ["completion"],
             pricing: {
-                "input": "6",
-                "output": "12"
+                "input": "0.15",
+                "output": "0.6"
             },
-            contextWindow: 8192,
-            knowledgeCutoff: "2023-09-01"
+            contextWindow: 128000,
+            knowledgeCutoff: "2024-07-18"
+        },
+        {
+            modelName: "gpt-4.1-nano",
+            type: "chat",
+            description: "",
+            capabilities: ["completion"],
+            pricing: {
+                "input": "0.1",
+                "output": "0.4"
+            },
+            contextWindow: 128000,
+            knowledgeCutoff: "2025-04-14"
         }
     ]
 
@@ -72,18 +43,20 @@ function OpenAI(){
         return this.models;
     }
     this.modelExists = function (modelName){
-        if (!this.models[modelName]) throw new Error(`Provider ${this.name} does not support model ${modelName}`)
-
+        let model = this.models.find(m => m.modelName === modelName);
+        if(!model) {
+            throw new Error(`Provider ${this.name} does not support model ${modelName}`);
+        }
     }
     this.getSDKClient = async function () {
         const OpenAISDK = (await import('openai')).default;
-        let keys = JSON.parse(process.env.API_KEYS);
         return new OpenAISDK(
             {
-                apiKey: keys.OPENAI_API_KEY.value
+                apiKey: process.env.OPENAI_API_KEY
             });
     }
     this.getTextResponse = async function(modelName, prompt, options = {}) {
+        this.modelExists(modelName);
         let client = await this.getSDKClient();
         const response = await client.responses.create({
             model: modelName,
