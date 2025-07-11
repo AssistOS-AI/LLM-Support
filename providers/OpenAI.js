@@ -72,7 +72,12 @@ function OpenAI(){
 
     this.getChatCompletionResponse = async function(modelName, messages, options = {}) {
         this.modelExists(modelName);
-        //call openai lib
+        let client = await this.getSDKClient();
+        const response = await client.chat.completions.create({
+            model: modelName,
+            messages: messages
+        });
+        return response.choices[0].message.content;
     }
 
     this.getChatCompletionStreamingResponse = function(modelName, messages, options = {}, onDataChunk) {
