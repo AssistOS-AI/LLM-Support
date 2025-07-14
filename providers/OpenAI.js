@@ -55,6 +55,23 @@ function OpenAI(){
                 apiKey: process.env.OPENAI_API_KEY
             });
     }
+    this.convertHistory = function (chatHistory) {
+        let convertedHistory = [];
+        for (let reply of chatHistory) {
+            let convertedReply = {
+                content: reply.message
+            }
+            if(reply.role === "human") {
+                convertedReply.role = "user";
+            } else if(reply.role === "ai") {
+                convertedReply.role = "assistant";
+            } else if(reply.role === "system") {
+                convertedReply.role = "developer";
+            }
+            convertedHistory.push(convertedReply);
+        }
+        return convertedHistory;
+    }
     this.getTextResponse = async function(modelName, prompt, options = {}) {
         this.modelExists(modelName);
         let client = await this.getSDKClient();
@@ -70,12 +87,13 @@ function OpenAI(){
         //call openai lib
     }
 
-    this.getChatCompletionResponse = async function(modelName, messages, options = {}) {
+    this.getChatCompletionResponse = async function(modelName, chatHistory, options = {}) {
         this.modelExists(modelName);
         let client = await this.getSDKClient();
+        let convertedHistory = this.convertHistory(chatHistory)
         const response = await client.chat.completions.create({
             model: modelName,
-            messages: messages
+            messages: convertedHistory
         });
         return response.choices[0].message.content;
     }
