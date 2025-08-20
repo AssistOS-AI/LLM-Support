@@ -1,4 +1,4 @@
-const binaryUtils = require ('../binaries/utils.js');
+//const binaryUtils = require ('../binaries/utils.js');
 
 function BinaryProvider() {
     this.name = 'BinaryProvider';
